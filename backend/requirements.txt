@@ -4,4 +4,8 @@ torch
 inference
 supervision
 boto3
+contextlib
+pydantic
 fastapi
+uvicorn
+gunicorn
