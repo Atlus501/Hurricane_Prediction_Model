@@ -1,0 +1,7 @@
+numpy
+pandas
+torch
+inference
+supervision
+boto3
+fastapi
