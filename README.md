@@ -95,8 +95,8 @@ Generally speaking, one can construct these custom loss functions through the fo
 
 $TotalLoss = sum_{i=1 to N} (C_i * exp(-s_i) * L_i(W) + 0.5 * s_i)$
 * $L_i(W)$ -- output of the loss function
-* s_i -- loss multiplier
-* C_i -- constant factor (0.5 for classification & 1.0 for classification)
+* $s_i$ -- loss multiplier
+* $C_i$ -- constant factor (0.5 for classification & 1.0 for classification)
 
 After computing the loss, we could call .backwards() on it like any other loss function output because PyTorch's autograd system would correct the gradients for us.
 
@@ -124,7 +124,7 @@ The model was trained on data from weather.gov, and several aspects of the data 
 
 There is also the limitation of time where processing a 15 minute video for its bounding box outputs could take hours. However, if one has a lot of free time to spare, then this could be overcomed.
 
-###Suggestions/Enhancements for Future Iterations of this Project
+### Suggestions/Enhancements for Future Iterations of this Project
 A possible idea to improve this project would be to input additional information in the RNN input to better predict hurricane paths (e.g., air pressure and sea surface temperature of the hurricane eye).
 
 Perhaps one could also ensure that this RNN works globally by inputting the exact longitude and latitude as well and retraing the RNN, so that the RNN isn't stuck to predicting this one region over the Atlantic Ocean specifically. (Retraining the Yolo shouldn't be necessary bc/ all hurricanes kinda look the same).
