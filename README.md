@@ -72,21 +72,21 @@ As stated in the paper, since these results come from different distributions (b
 
 Finding such values a & b manually would be tedious. Also, using a model to find them wouldn't be ideal because said model could easily cheat the system by setting a & b to 0 or a negative value.
 
-Thus, they proposed the following loss function: 1/(2sigma$^2_1$)L$_1$(W) + 1/(sigma$^2_2$)L$_2$(W) + log(sigma$_1$) + log(sigma$_2$).
-* L$_1$(W) -- euclidean loss
-* L$_2$(W) -- cross entropy loss
-* a = log(sigma$^2_1$)
-* b = log(sigma$^2_2$)
-* sigma$^2$ = exp(a) or exp(b)
+Thus, they proposed the following loss function: 1/(2$sigma^2_1$)$L_1$(W) + 1/($sigma^2_2$)$L_2$(W) + log($sigma_1$) + log($sigma_2$).
+* $L_1$(W) -- euclidean loss
+* $L_2$(W) -- cross entropy loss
+* a = log($sigma^2_1$)
+* b = log($sigma^2_2$)
+* $sigma^2$ = exp(a) or exp(b)
 * log(sigma) = 0.5a or 0.5b
 
 Thus, for the code, it converts a & b into
 * 1/exp(-a) + 0.5*a
 * 1/exp(-b) + 0.5*b
 
-Although one could try to optimize for sigma directly instead of something like s = log(sigma$^2_1$), the paper stated that in practice, it is best to optimize for s = log(sigma$^2_1$) because it is more stable.
+Although one could try to optimize for sigma directly instead of something like s = log($sigma^2_1$), the paper stated that in practice, it is best to optimize for s = log($sigma^2_1$) because it is more stable.
 
-In this equation, it would be impossible for the model to cheat either sigma values (by setting them to zero or any small number) bc/ either the 1/(sigma$^2$) or log(sigma) parts of the equation would increase the loss dramatically.
+In this equation, it would be impossible for the model to cheat either sigma values (by setting them to zero or any small number) bc/ either the 1/($sigma^2$) or log(sigma) parts of the equation would increase the loss dramatically.
 
 Generally speaking, one can construct these custom loss functions through the following steps:
 * use the appropriate loss function (MSE for regression, BCE for binary classification, and CE for multi classification)
